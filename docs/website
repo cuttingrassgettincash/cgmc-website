@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuttin Grass Makin Cash LLC</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --accent-gold: #d4af37;
+            --accent-green: #4e7e4e;
+            --text-light: #ffffff;
+            --card-bg: #151515;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Updated Header for Left Alignment */
+        header {
+            background-color: var(--bg-dark);
+            padding: 20px 5%; /* Side padding to keep it off the very edge */
+            border-bottom: 3px solid var(--accent-green);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between; /* Pushes logo left, nav right */
+            align-items: center;
+        }
+
+        .logo-container img {
+            max-width: 180px; /* Sized down slightly for the side layout */
+            height: auto;
+            border: 2px solid var(--accent-gold);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav button {
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        nav button:hover, nav button.active {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .page-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2 {
+            color: var(--accent-green);
+            text-transform: uppercase;
+        }
+
+        p {
+            line-height: 1.8;
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Form Styles */
+        .contact-container {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent-green);
+        }
+
+        .phone-display {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+            display: inline-block;
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-gold);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            background: #222;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--accent-gold);
+            outline: none;
+        }
+
+        .submit-btn {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #050505;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 20px;
+            }
+            nav {
+                margin-top: 20px;
+            }
+            .logo-container img {
+                max-width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="cover image.jpg" alt="Cuttin Grass Makin Cash LLC Logo">
+    </div>
+    <nav>
+        <button onclick="showPage('home')" id="home-btn" class="active">Home</button>
+        <button onclick="showPage('about')" id="about-btn">About</button>
+        <button onclick="showPage('contact')" id="contact-btn">Contact</button>
+    </nav>
+</header>
+
+<main>
+    <!-- Home Section -->
+    <section id="home" class="page-content active">
+        <h1>Professional Grounds Maintenance</h1>
+        <p>Welcome to <strong>Cuttin Grass Makin Cash LLC</strong>. We don't just mow lawns; we provide a sharp, professional finish that makes your property stand out. From residential yards to commercial maintenance, our team brings the grit and the gear to get the job done right.</p>
+        <div style="border: 1px dashed var(--accent-green); padding: 20px; margin-top: 30px; text-align: center;">
+            <strong>Clean Edges. Reliable Service. Every Time.</strong>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="page-content">
+        <h2>About the Company</h2>
+        <p>Cuttin Grass Makin Cash LLC was built on a simple foundation: hard work and clear results. We understand that your outdoor space is an investment, and we treat every lawn as if it were our own.</p>
+        <p>Our team specializes in precision cutting and grounds maintenance. We believe that a well-maintained lawn reflects the pride of the owner, and we take that responsibility seriously. Whether it's a one-time clean-up or a weekly schedule, we ensure your grass looks like cash.</p>
+        <p><em>Filler Text:</em> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="page-content">
+        <h2>Get a Quote</h2>
+        <p>Call or text us today:</p>
+        <a href="tel:4236509833" class="phone-display">(423) 650-9833</a>
+        
+        <div class="contact-container">
+            <form action="#">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="(000) 000-0000">
+                </div>
+                <div class="form-group">
+                    <label>Message / Details</label>
+                    <textarea rows="5" placeholder="How can we help with your landscaping?"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Cuttin Grass Makin Cash LLC | cuttingrassmakincash@gmail.com</p>
+</footer>
+
+<script>
+    function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll('.page-content').forEach(page => {
+            page.classList.remove('active');
+        });
+        
+        // Remove active button styling
+        document.querySelectorAll('nav button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // Show the selected page and set button to active
+        document.getElementById(pageId).classList.add('active');
+        document.getElementById(pageId + '-btn').classList.add('active');
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
