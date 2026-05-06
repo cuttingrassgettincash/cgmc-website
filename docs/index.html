@@ -24,21 +24,16 @@
             min-height: 100vh;
         }
 
-        /* Updated Header for Left Alignment */
-        header {
-            background-color: var(--bg-dark);
-            padding: 20px 5%; /* Side padding to keep it off the very edge */
-            border-bottom: 3px solid var(--accent-green);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between; /* Pushes logo left, nav right */
-            align-items: center;
+        /* 1. The Logo: Now fixed to the top left and floating above all */
+        .logo-container {
+            position: fixed;   /* Keeps it visible even when scrolling */
+            top: 15px;         /* Distance from top */
+            left: 15px;        /* Distance from left */
+            z-index: 1100;     /* Higher than header to stay on top */
         }
 
         .logo-container img {
-            max-width: 180px; /* Sized down slightly for the side layout */
+            max-width: 140px;  /* Sized to hang neatly in the corner */
             height: auto;
             border: 2px solid var(--accent-gold);
             border-radius: 8px;
@@ -46,9 +41,24 @@
             display: block;
         }
 
+        /* 2. The Header: Now just a container for the centered nav */
+        header {
+            background-color: var(--bg-dark);
+            border-bottom: 3px solid var(--accent-green);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: right; /* This centers the nav/buttons */
+            padding: 10px 0;
+        }
+
+        /* 3. The Nav: Shrinks to fit only the buttons */
         nav {
             display: flex;
             gap: 15px;
+            padding: 10px;
+			justify-content: right;
         }
 
         nav button {
@@ -71,7 +81,7 @@
         /* Main Content */
         main {
             flex: 1;
-            padding: 40px 20px;
+            padding: 60px 20px;
             max-width: 900px;
             margin: 0 auto;
             width: 100%;
@@ -167,20 +177,62 @@
             font-size: 0.9rem;
             margin-top: 40px;
         }
+				/* Container for the side-by-side images */
+		.image-gallery {
+			display: flex;
+			gap: 20px;       /* The space between the two images */
+			margin-top: 30px;
+		}
 
-        /* Mobile Optimization */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 20px;
-            }
-            nav {
-                margin-top: 20px;
-            }
-            .logo-container img {
-                max-width: 150px;
-            }
-        }
+		/* Ensures both columns take up equal space */
+		.image-column {
+			flex: 1;
+		}
+
+		.image-column img {
+			width: 100%;     /* Stretches image to fit the column */
+			height: auto;    /* Keeps the image from looking distorted */
+			border: 2px solid var(--accent-green);
+			border-radius: 8px;
+			box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+		}
+
+		/* Mobile: Stack them vertically so they stay large and clear */
+		@media (max-width: 600px) {
+			.image-gallery {
+				flex-direction: column;
+			}
+		}
+
+		/* Mobile Optimization */
+		@media (max-width: 768px) {
+			header {
+				flex-direction: column-reverse; /* Swaps Nav to the top and Logo to the bottom */
+				padding-bottom: 10px;          /* Pushes the main content down below the image */
+			}
+
+			.logo-container {
+				position: static;              /* Stops the logo from floating so it sits in the column */
+				margin-top: 5px;              /* Space between the nav buttons and the image */
+				display: flex;
+				justify-content: center;       /* Centers the logo horizontally */
+			}
+
+			.logo-container img {
+				max-width: 130px;
+				height: auto;
+			}
+
+			nav {
+				width: 100%;
+				justify-content: center;       /* Ensures buttons stay centered in the column */
+			}
+
+			body {
+				margin-top: -80px;                /* Removes top padding since the header is now taller */
+			}
+		}
+				
     </style>
 </head>
 <body>
@@ -197,21 +249,26 @@
 </header>
 
 <main>
-    <!-- Home Section -->
     <section id="home" class="page-content active">
-        <h1>Professional Grounds Maintenance</h1>
-        <p>Welcome to <strong>Cuttin Grass Makin Cash LLC</strong>. We don't just mow lawns; we provide a sharp, professional finish that makes your property stand out. From residential yards to commercial maintenance, our team brings the grit and the gear to get the job done right.</p>
-        <div style="border: 1px dashed var(--accent-green); padding: 20px; margin-top: 30px; text-align: center;">
-            <strong>Clean Edges. Reliable Service. Every Time.</strong>
-        </div>
+        <h1>Cuttin Grass Makin Cash LLC.</h1> 
+		<p>Reliablity, grind, & attention to detail. I don't just show up- I show out. Consistency, fair prices, & service that keeps people calling back. I bring the same engergy, the same hustle, and the same commitment to keepin it fresh. <strong> -Cuttin Grass Makin Cash- </strong></p>
+		<div class="image-gallery">
+		<div class="image-column">
+			<img src="11555.jpg" alt="Landscaping Work 1">
+		</div>
+		<div class="image-column">
+			<img src="11556.jpg" alt="Landscaping Work 2">
+		</div>
+	</div>  
+	  
     </section>
 
     <!-- About Section -->
     <section id="about" class="page-content">
         <h2>About the Company</h2>
-        <p>Cuttin Grass Makin Cash LLC was built on a simple foundation: hard work and clear results. We understand that your outdoor space is an investment, and we treat every lawn as if it were our own.</p>
-        <p>Our team specializes in precision cutting and grounds maintenance. We believe that a well-maintained lawn reflects the pride of the owner, and we take that responsibility seriously. Whether it's a one-time clean-up or a weekly schedule, we ensure your grass looks like cash.</p>
-        <p><em>Filler Text:</em> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p>My name is Dustin, and I'm the owner of Cuttin Grass Makin Cash here in Chattanooga.</p>
+        <p>I'm currently taking on new customers for lawn care service in Chattanooga, East Ridge, Ringgold, hixson, Ooltewah, and Cleveland. I would love to help anyone needing reliable, affordable work. If you're interested, feel free to message me or call/text for a free quote.</p>
+		<p>Thanks, y'all!</p>
     </section>
 
     <!-- Contact Section -->
@@ -224,7 +281,7 @@
             <form action="#">
                 <div class="form-group">
                     <label>Your Name</label>
-                    <input type="text" placeholder="Full Name" required>
+                    <input type="text" placeholder="Name" required>
                 </div>
                 <div class="form-group">
                     <label>Email Address</label>
@@ -245,26 +302,15 @@
 </main>
 
 <footer>
-    <p>&copy; 2026 Cuttin Grass Makin Cash LLC | cuttingrassmakincash@gmail.com</p>
+    <p>&copy; 2026 Cuttin Grass Makin Cash LLC | cuttingrassmakincash@gmail.com | (423)-650-9833</p>
 </footer>
 
 <script>
     function showPage(pageId) {
-        // Hide all pages
-        document.querySelectorAll('.page-content').forEach(page => {
-            page.classList.remove('active');
-        });
-        
-        // Remove active button styling
-        document.querySelectorAll('nav button').forEach(btn => {
-            btn.classList.remove('active');
-        });
-
-        // Show the selected page and set button to active
+        document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
+        document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
         document.getElementById(pageId).classList.add('active');
         document.getElementById(pageId + '-btn').classList.add('active');
-        
-        // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
